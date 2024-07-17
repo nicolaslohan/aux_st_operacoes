@@ -3,6 +3,8 @@ import pandas as pd
 from google.cloud import bigquery as bq
 from google.oauth2 import service_account
 from google import auth
+import duckdb as sql
+
 
 st.set_page_config(page_title="Perído de Experiência", page_icon=":bust_in_silhouette:")
 st.title("Produtividade - Operações")
@@ -30,4 +32,8 @@ def data():
         data.append(r)
     return data
 
-st.write(pd.DataFrame(data()))
+dados = pd.DataFrame(data())
+st.write(dados)
+
+st.write(sql.query("SELECT nome_corrigido, unidade_trabalho FROM dados WHERE unidade_trabalho = 'REGIONAL CAMPINA GRANDE'").df())
+
