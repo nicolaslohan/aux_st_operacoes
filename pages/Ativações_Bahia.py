@@ -18,28 +18,29 @@ if ativacoes is not None:
 
     df.columns = df.iloc[0]
     df.drop(df.index[0], inplace=True)
+    df["Cidade"] = df["Cidade"].map(str.strip).map(str.upper)
 
     def conditions(x):
         
-        if x == 'Euclides da Cunha': return 'REGIONAL FILADÉLFIA'
-        if x == 'Filadélfia': return 'REGIONAL FILADÉLFIA'
-        if x == 'Itiúba': return 'REGIONAL FILADÉLFIA'
-        if x == 'Queimadas': return 'REGIONAL FILADÉLFIA'
-        if x == 'Caldeirão Grande': return 'REGIONAL FILADÉLFIA'
-        if x == 'Ponto Novo': return 'REGIONAL FILADÉLFIA'
-        if x == 'Saúde': return 'REGIONAL FILADÉLFIA'
-        if x == 'Capim Grosso': return 'REGIONAL JACOBINA'
-        if x == 'Quixabeira': return 'REGIONAL JACOBINA'
-        if x == 'São José do Jacuípe': return 'REGIONAL JACOBINA'
-        if x == 'Andorinha': return 'REGIONAL SENHOR DO BONFIM'
-        if x == 'Campo Formoso': return 'REGIONAL SENHOR DO BONFIM'
-        if x == 'Senhor do Bonfim': return 'REGIONAL SENHOR DO BONFIM'
-        if x == 'Irecê': return 'REGIONAL JACOBINA'
-        if x == 'Jacobina': return 'REGIONAL JACOBINA'
-        if x == 'Caém': return 'REGIONAL FILADÉLFIA'
-        if x == 'Pindobaçu': return 'REGIONAL FILADÉLFIA'
-        if x == 'Cansanção': return 'REGIONAL FILADÉLFIA'
-        if x == 'Antônio Gonçalves': return 'REGIONAL FILADÉLFIA'
+        if x == 'EUCLIDES DA CUNHA': return 'REGIONAL FILADÉLFIA'
+        if x == 'FILADÉLFIA': return 'REGIONAL FILADÉLFIA'
+        if x == 'ITIÚBA': return 'REGIONAL FILADÉLFIA'
+        if x == 'QUEIMADAS': return 'REGIONAL FILADÉLFIA'
+        if x == 'CALDEIRÃO GRANDE': return 'REGIONAL FILADÉLFIA'
+        if x == 'PONTO NOVO': return 'REGIONAL FILADÉLFIA'
+        if x == 'SAÚDE': return 'REGIONAL FILADÉLFIA'
+        if x == 'CAPIM GROSSO': return 'REGIONAL JACOBINA'
+        if x == 'QUIXABEIRA': return 'REGIONAL JACOBINA'
+        if x == 'SÃO JOSÉ DO JACUÍPE': return 'REGIONAL JACOBINA'
+        if x == 'ANDORINHA': return 'REGIONAL SENHOR DO BONFIM'
+        if x == 'CAMPO FORMOSO': return 'REGIONAL SENHOR DO BONFIM'
+        if x == 'SENHOR DO BONFIM': return 'REGIONAL SENHOR DO BONFIM'
+        if x == 'IRECÊ': return 'REGIONAL JACOBINA'
+        if x == 'JACOBINA': return 'REGIONAL JACOBINA'
+        if x == 'CAÉM': return 'REGIONAL FILADÉLFIA'
+        if x == 'PINDOBAÇU': return 'REGIONAL FILADÉLFIA'
+        if x == 'CANSANÇÃO': return 'REGIONAL FILADÉLFIA'
+        if x == 'ANTÔNIO GONÇALVES': return 'REGIONAL FILADÉLFIA'
         
     func = np.vectorize(conditions)
     unidade = func(df["Cidade"])
